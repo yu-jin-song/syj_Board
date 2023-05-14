@@ -1,0 +1,41 @@
+{{>layout/header}}
+
+<h1>게시글 조회</h1>
+
+<div class="col-md-12">
+    <table class="table table-horizontal table-bordered">
+        <tbody id="tbody">
+            <tr>
+                <th>제목</th>
+                <td>{{post.title}}</td>
+                <th>생성일자</th>
+                <td>{{post.createAt}}</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td colspan="3">
+                    {{post.content}}
+                </td>
+            </tr>
+            <tr>
+                <th>연관게시물</th>
+                <td colspan="3">
+                    {{#relatedPosts}}
+                        <a href="/posts/read/{{id}}">{{title}}</a>
+                    {{/relatedPosts}}
+                    {{^relatedPosts}}
+                        연관게시물이 존재하지 않습니다.
+                    {{/relatedPosts}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <a href="/" role="button" class="btn btn-secondary">돌아가기</a>
+        <div class="col-md-6">
+            <a href="/posts/update/{{post.id}}" role="button" class="btn btn-primary">글 수정</a>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}
